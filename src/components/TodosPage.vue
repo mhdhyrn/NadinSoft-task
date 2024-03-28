@@ -98,7 +98,7 @@ export default {
       this.isModalOpen = false;
     },
     addTodoHandler() {
-      if (this.inputValue.trim() < 3 || this.inputValue.trim() > 40) {
+      if (this.inputValue.trim().length < 3 || this.inputValue.trim().length > 40) {
         alert("Todo name is too long or too short");
       } else {
         this.todos.push({ name: this.inputValue });

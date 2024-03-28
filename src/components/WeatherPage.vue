@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     async fetchData() {
-      if (this.inputValue.trim() < 3) {
+      if (this.inputValue.trim().length < 3) {
         alert("Name is Invalid!");
       } else {
         this.isLoading = true;

@@ -1,6 +1,9 @@
 <template>
   <div class="flex h-full justify-center items-center">
-    <form class="flex flex-col gap-14 w-1/2 items-center" @submit.prevent="formSubmitHandler">
+    <form
+      class="flex flex-col gap-14 w-1/2 items-center"
+      @submit.prevent="formSubmitHandler"
+    >
       <input
         type="text"
         v-model="userName"
@@ -10,7 +13,7 @@
       <select
         v-model="selectedTheme"
         name="themeSelect"
-        class="w-1/2 h-10 border-2 bg-orange-200 rounded-md outline-orange-500"
+        class="w-1/2 h-10 border-2 bg-orange-200 rounded-md outline-orange-500 px-5"
       >
         <option value="null" disabled>Select theme...</option>
         <option
@@ -24,7 +27,7 @@
       <select
         v-model="selectedLang"
         name="langSelect"
-        class="w-1/2 h-10 border-2 bg-orange-200 rounded-md outline-orange-500"
+        class="w-1/2 h-10 border-2 bg-orange-200 rounded-md outline-orange-500 px-5"
       >
         <option value="null" disabled>Select language...</option>
         <option
@@ -63,8 +66,19 @@ export default {
   },
   methods: {
     formSubmitHandler() {
-        
-    }
+      if (
+        this.userName.trim().length < 3 ||
+        this.selectedLang === "null" ||
+        this.selectedTheme === "null"
+      ) {
+        alert("Please fill all inputs!");
+      } else {
+        localStorage.setItem("userName", JSON.stringify(this.userName));
+        localStorage.setItem("theme", JSON.stringify(this.selectedTheme));
+        localStorage.setItem("lang", JSON.stringify(this.selectedLang));
+        alert("The changes successfully saved!");
+      }
+    },
   },
 };
 </script>
