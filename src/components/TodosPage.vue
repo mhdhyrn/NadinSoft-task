@@ -13,7 +13,7 @@
     >
       <div v-if="todos.length == 0">No Todo Yet...</div>
       <div
-        class="bg-slate-500 text-white flex items-center justify-between px-10 w-[90%] rounded-md h-16"
+        class="bg-slate-500 text-white flex items-center justify-between p-10 w-[90%] rounded-md h-20"
         v-else
         v-for="(todo, index) in todos"
         :key="index"
