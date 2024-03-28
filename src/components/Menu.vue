@@ -30,7 +30,7 @@ export default {
     setButtonActiveClass(routeName) {
       return {
         [this.buttonStyleClasses]: true,
-        "bg-blue-500 text-blue-50 underline": this.$route.name === routeName,
+        "!bg-blue-500 !text-blue-50 underline": this.$route.name === routeName,
       };
     },
   },
