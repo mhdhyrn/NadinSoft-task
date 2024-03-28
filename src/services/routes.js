@@ -6,11 +6,10 @@ import WeatherPage from "../components/WeatherPage.vue";
 import ProfilePage from "../components/ProfilePage.vue";
 
 const routes = [
-  { path: "/", component: DashboardPage },
-  { path: "/dashboard", component: DashboardPage },
-  { path: "/todos", component: TodosPage },
-  { path: "/weather", component: WeatherPage },
-  { path: "/profile", component: ProfilePage },
+  { path: "/", component: DashboardPage, name: "dashboard" },
+  { path: "/todos", component: TodosPage, name: "todos" },
+  { path: "/weather", component: WeatherPage, name: "weather" },
+  { path: "/profile", component: ProfilePage, name: "profile" },
 ];
 const router = createRouter({
   history: createWebHashHistory(),
