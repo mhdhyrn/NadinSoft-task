@@ -1,5 +1,5 @@
 <template>
-  <div id="main" class="">
+  <div id="main" class="h-screen w-screen overflow-hidden main">
     <Header></Header>
     <Menu></Menu>
     <div class="w-[85%]">
@@ -23,4 +23,5 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
