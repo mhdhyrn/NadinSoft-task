@@ -1,7 +1,18 @@
+<template>
+  <div id="main" class="">
+    <Header></Header>
+    <Menu></Menu>
+    <div class="w-[85%]">
+      <router-view></router-view>
+    </div>
+  </div>
+</template>
+
 <script>
 import Menu from "./components/Menu.vue";
 import Header from "./components/Header.vue";
 import DashboardPage from "./components/DashboardPage.vue";
+
 export default {
   name: "App",
   components: {
@@ -11,13 +22,5 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div id="main" class="">
-    <Header></Header>
-    <Menu></Menu>
-    <DashboardPage></DashboardPage>
-  </div>
-</template>
 
 <style scoped></style>
