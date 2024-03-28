@@ -2,7 +2,7 @@
   <div id="main" class="">
     <Header></Header>
     <Menu></Menu>
-    <div>
+    <div class="w-[85%]">
       <router-view></router-view>
     </div>
   </div>
