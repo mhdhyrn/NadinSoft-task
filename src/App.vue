@@ -3,7 +3,7 @@
     <Header></Header>
     <Menu></Menu>
     <div class="w-[85%]">
-      <router-view></router-view>
+      <router-view ></router-view>
     </div>
   </div>
 </template>
@@ -20,8 +20,9 @@ export default {
     Header,
     DashboardPage,
   },
+  beforeMount() {
+  },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

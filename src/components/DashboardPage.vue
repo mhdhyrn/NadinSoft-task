@@ -1,5 +1,6 @@
 <template>
-  <div class="w-full">
+  <ShouldLogin v-if="!isLogin"></ShouldLogin>
+  <div class="w-full" v-else>
     <div class="mt-20">
       <h2 class="text-center text-2xl">{{ currentTime }}</h2>
     </div>
@@ -9,6 +10,8 @@
   </div>
 </template>
 <script>
+import utils from "../services/utils";
+import ShouldLogin from "./ShouldLogin.vue";
 export default {
   name: "DashboardPage",
   data() {
@@ -16,7 +19,11 @@ export default {
       currentTime: "",
       greeting: "",
       userName: "",
+      isLogin: utils(),
     };
+  },
+  components: {
+    ShouldLogin,
   },
   methods: {
     updateTime() {

@@ -1,5 +1,6 @@
 <template>
-  <div class="h-[calc(100%-70px)] relative">
+  <ShouldLogin v-if="!isLogin"></ShouldLogin>
+  <div class="h-[calc(100%-70px)] relative" v-else>
     <div class="text-center my-10">
       <button
         class="p-5 bg-green-500 rounded-md text-white"
@@ -71,6 +72,8 @@
   </div>
 </template>
 <script>
+import utils from "../services/utils";
+import ShouldLogin from "./ShouldLogin.vue";
 export default {
   name: "TodosPage",
   data() {
@@ -80,7 +83,11 @@ export default {
       isEditModal: false,
       inputValue: "",
       selectedTodoIndex: 0,
+      isLogin: utils(),
     };
+  },
+  components: {
+    ShouldLogin,
   },
   methods: {
     showAddTodoModal() {
@@ -98,7 +105,10 @@ export default {
       this.isModalOpen = false;
     },
     addTodoHandler() {
-      if (this.inputValue.trim().length < 3 || this.inputValue.trim().length > 40) {
+      if (
+        this.inputValue.trim().length < 3 ||
+        this.inputValue.trim().length > 40
+      ) {
         alert("Todo name is too long or too short");
       } else {
         this.todos.push({ name: this.inputValue });

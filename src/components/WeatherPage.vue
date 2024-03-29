@@ -1,5 +1,6 @@
 <template>
-  <div class="flex w-full flex-col items-center">
+  <ShouldLogin v-if="!isLogin"></ShouldLogin>
+  <div class="flex w-full flex-col items-center" v-else>
     <div class="w-full text-center mt-20">
       <input
         type="text"
@@ -44,6 +45,8 @@
 <script>
 import axios from "axios";
 import cityAddress from "../services/cityAddress";
+import utils from "../services/utils";
+import ShouldLogin from "./ShouldLogin.vue";
 export default {
   name: "WeatherPage",
   data() {
@@ -52,7 +55,11 @@ export default {
       windSpeed: "",
       inputValue: "",
       isLoading: false,
+      isLogin: utils(),
     };
+  },
+  components: {
+    ShouldLogin,
   },
   methods: {
     async fetchData() {
