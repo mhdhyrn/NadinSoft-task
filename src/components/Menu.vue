@@ -1,18 +1,26 @@
 <template>
   <div
-    class="w-[15%] h-[calc(100vh-70px)] flex flex-col gap-4 border-r-2 border-blue-900 bg-blue-300 items-center pt-4"
+    class="w-[15%] h-[calc(100vh-70px)] flex flex-col gap-4 border-r-2 border-blue-900 bg-blue-300 items-center pt-4 dark:bg-slate-400"
   >
     <router-link to="/" class="w-full text-center">
-      <button :class="setButtonActiveClass('dashboard')">Dashboard</button>
+      <button :class="setButtonActiveClass('dashboard')">
+        {{ $t("menuDashboard") }}
+      </button>
     </router-link>
     <router-link to="/todos" class="w-full text-center">
-      <button :class="setButtonActiveClass('todos')">Todos</button>
+      <button :class="setButtonActiveClass('todos')">
+        {{ $t("menuTodos") }}
+      </button>
     </router-link>
     <router-link to="/weather" class="w-full text-center">
-      <button :class="setButtonActiveClass('weather')">Weather</button>
+      <button :class="setButtonActiveClass('weather')">
+        {{ $t("menuWeather") }}
+      </button>
     </router-link>
     <router-link to="/profile" class="w-full text-center">
-      <button :class="setButtonActiveClass('profile')">Profile</button>
+      <button :class="setButtonActiveClass('profile')">
+        {{ $t("menuProfile") }}
+      </button>
     </router-link>
   </div>
 </template>

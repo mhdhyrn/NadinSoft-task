@@ -1,18 +1,18 @@
 <template>
   <ShouldLogin v-if="!isLogin"></ShouldLogin>
-  <div class="h-[calc(100%-70px)] relative" v-else>
-    <div class="text-center my-10">
+  <div class="h-[100%] relative dark:bg-slate-700" v-else>
+    <div class="text-center">
       <button
-        class="p-5 bg-green-500 rounded-md text-white"
+        class="p-5 bg-green-500 rounded-md text-white mt-10"
         @click="showAddTodoModal"
       >
-        Add Todo
+        {{ this.$t("todosAddBtn") }}
       </button>
     </div>
     <div
-      class="overflow-y-auto h-[80%] rounded-md flex flex-col items-center gap-5"
+      class="overflow-y-auto h-[80%] rounded-md flex flex-col items-center gap-5 mt-10 dark:text-white"
     >
-      <div v-if="todos.length == 0">No Todo Yet...</div>
+      <div v-if="todos.length == 0">{{ $t("todosNoTodoTitle") }}</div>
       <div
         class="bg-slate-500 text-white flex items-center justify-between p-10 w-[90%] rounded-md h-20"
         v-else
@@ -23,31 +23,35 @@
           <span>{{ todo.name }}</span>
         </div>
         <div class="w-[10%] flex justify-between">
-          <button @click="deleteTodoHandler(index)">delete</button>
-          <button @click="showEditTodoModal(index)">edit</button>
+          <button @click="deleteTodoHandler(index)">
+            {{ $t("todosDeleteBtn") }}
+          </button>
+          <button @click="showEditTodoModal(index)">
+            {{ $t("todosEditBtn") }}
+          </button>
         </div>
       </div>
     </div>
     <!-- modal -->
     <div
       v-if="isModalOpen"
-      class="absolute inset-0 z-10 w-full h-full bg-slate-500 flex flex-col items-center p-10"
+      class="absolute inset-0 z-10 w-full h-full bg-slate-500 flex flex-col items-center p-10 dark:bg-slate-500"
     >
       <div class="w-full text-end mb-20">
         <button
           @click="closeModal"
           class="w-16 h-14 bg-rose-500 text-white rounded-md"
         >
-          close
+          {{ $t("todosModalCloseBtn") }}
         </button>
       </div>
-      <div class="w-2/3 h-2/3 bg-slate-50 rounded-md p-10">
+      <div class="w-2/3 h-2/3 bg-slate-50 rounded-md p-10 dark:bg-slate-700">
         <div class="text-center mt-10">
           <input
             maxlength="40"
             v-model="inputValue"
             type="text"
-            placeholder="Your Todo Name"
+            :placeholder="$t('todosModalPlaceholderInput')"
             class="w-1/2 h-12 border-2 border-slate-500 rounded-md px-5"
           />
         </div>
@@ -57,14 +61,14 @@
             @click="editTodoHandler"
             class="w-20 h-14 bg-blue-500 rounded-md text-white"
           >
-            Edit
+            {{ $t("todosModalEditBtn") }}
           </button>
           <button
             v-if="!isEditModal"
             @click="addTodoHandler"
             class="w-20 h-14 bg-blue-500 rounded-md text-white"
           >
-            Add
+            {{ $t("todosModalAddBtn") }}
           </button>
         </div>
       </div>

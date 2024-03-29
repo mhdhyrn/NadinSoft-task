@@ -1,7 +1,10 @@
 <template>
   <ShouldLogin v-if="!isLogin"></ShouldLogin>
-  <div class="w-full" v-else>
-    <div class="mt-20">
+  <div
+    class="w-full dark:bg-slate-700 dark:text-white h-screen flex items-center flex-col justify-center"
+    v-else
+  >
+    <div>
       <h2 class="text-center text-2xl">{{ currentTime }}</h2>
     </div>
     <div class="mt-10">
@@ -32,15 +35,14 @@ export default {
       this.updateGreeting(now.getHours());
     },
     updateGreeting(hour) {
-      console.log(hour);
       if (hour >= 5 && hour < 12) {
-        this.greeting = "Good Morning";
+        this.greeting = this.$t("dashboardGreeting.morning");
       } else if (hour >= 12 && hour < 18) {
-        this.greeting = "Good Afternoon";
+        this.greeting = this.$t("dashboardGreeting.afternoon");
       } else if (hour >= 18 && hour < 21) {
-        this.greeting = "Good Evening";
+        this.greeting = this.$t("dashboardGreeting.evening");
       } else {
-        this.greeting = "Good Night";
+        this.greeting = this.$t("dashboardGreeting.night");
       }
     },
   },

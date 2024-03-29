@@ -3,7 +3,7 @@
     <Header></Header>
     <Menu></Menu>
     <div class="w-[85%]">
-      <router-view ></router-view>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -20,7 +20,14 @@ export default {
     Header,
     DashboardPage,
   },
-  beforeMount() {
+  mounted() {
+    if (JSON.parse(localStorage.getItem("lang")) === "fa") {
+      this.$i18n.locale = "fa";
+    } else {
+      this.$i18n.locale = "en";
+    }
+    const isDark = JSON.parse(localStorage.getItem("theme"))  === "dark";
+        document.documentElement.classList.toggle("dark", isDark);
   },
 };
 </script>

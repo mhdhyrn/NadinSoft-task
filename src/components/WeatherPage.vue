@@ -1,11 +1,11 @@
 <template>
   <ShouldLogin v-if="!isLogin"></ShouldLogin>
-  <div class="flex w-full flex-col items-center" v-else>
+  <div class="flex w-full flex-col items-center dark:bg-slate-700 h-screen" v-else>
     <div class="w-full text-center mt-20">
       <input
         type="text"
         v-model="inputValue"
-        placeholder="Your City Name..."
+        :placeholder="$t('weatherPlaceholderInput')"
         class="w-1/4 h-10 mx-5 bg-stone-300 text-black placeholder:text-slate-500 rounded-md outline-blue-500 p-5"
       />
       <button
@@ -13,7 +13,7 @@
         class="h-10 w-44 px-5 py-2 bg-green-500 rounded-md text-white"
         ref="searchBtn"
       >
-        <span class="mx-2">Search </span>
+        <span class="mx-2">{{ $t("weatherSearchBtn") }}</span>
         <svg
           v-if="isLoading"
           aria-hidden="true"
@@ -34,10 +34,10 @@
       </button>
     </div>
     <div class="bg-orange-300 mt-32 p-16 rounded-md">
-      <p v-if="!weather && !windSpeed">Enter Your City</p>
+      <p v-if="!weather && !windSpeed">{{ $t("weatherNoEnteryTitle") }}</p>
       <div v-else>
-        <p>Temperature: {{ weather }} °C</p>
-        <p>Wind Speed: {{ windSpeed }} km/h</p>
+        <p>{{ $t("weatherTempTitle") }} {{ weather }} °C</p>
+        <p>{{ $t("weatherSWTitel") }} {{ windSpeed }} km/h</p>
       </div>
     </div>
   </div>
