@@ -20,8 +20,16 @@ export default {
     Header,
     DashboardPage,
   },
+  mounted() {
+    if (JSON.parse(localStorage.getItem("lang")) === "fa") {
+      this.$i18n.locale = "fa";
+    } else {
+      this.$i18n.locale = "en";
+    }
+    const isDark = JSON.parse(localStorage.getItem("theme"))  === "dark";
+        document.documentElement.classList.toggle("dark", isDark);
+  },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

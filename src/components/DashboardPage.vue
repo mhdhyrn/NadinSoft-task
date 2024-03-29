@@ -1,6 +1,10 @@
 <template>
-  <div class="w-full">
-    <div class="mt-20">
+  <ShouldLogin v-if="!isLogin"></ShouldLogin>
+  <div
+    class="w-full dark:bg-slate-700 dark:text-white h-screen flex items-center flex-col justify-center"
+    v-else
+  >
+    <div>
       <h2 class="text-center text-2xl">{{ currentTime }}</h2>
     </div>
     <div class="mt-10">
@@ -9,6 +13,8 @@
   </div>
 </template>
 <script>
+import utils from "../services/utils";
+import ShouldLogin from "./ShouldLogin.vue";
 export default {
   name: "DashboardPage",
   data() {
@@ -16,7 +22,11 @@ export default {
       currentTime: "",
       greeting: "",
       userName: "",
+      isLogin: utils(),
     };
+  },
+  components: {
+    ShouldLogin,
   },
   methods: {
     updateTime() {
@@ -25,15 +35,14 @@ export default {
       this.updateGreeting(now.getHours());
     },
     updateGreeting(hour) {
-      console.log(hour);
       if (hour >= 5 && hour < 12) {
-        this.greeting = "Good Morning";
+        this.greeting = this.$t("dashboardGreeting.morning");
       } else if (hour >= 12 && hour < 18) {
-        this.greeting = "Good Afternoon";
+        this.greeting = this.$t("dashboardGreeting.afternoon");
       } else if (hour >= 18 && hour < 21) {
-        this.greeting = "Good Evening";
+        this.greeting = this.$t("dashboardGreeting.evening");
       } else {
-        this.greeting = "Good Night";
+        this.greeting = this.$t("dashboardGreeting.night");
       }
     },
   },

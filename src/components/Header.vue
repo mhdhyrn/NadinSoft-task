@@ -1,8 +1,8 @@
 <template>
   <div
-    class="w-full h-[70px] text-center bg-purple-300 border-b-2 border-purple-900 text-purple-900 flex items-center justify-center text-2xl font-bold dark:bg-red-600"
+    class="w-full h-[70px] text-center bg-purple-300 border-b-2 border-purple-900 text-purple-900 flex items-center justify-center text-2xl font-bold dark:bg-purple-600 dark:text-white"
   >
-    <h1>App Bar</h1>
+    <h1>{{ $t("headerTitle") }}</h1>
   </div>
 </template>
 <script>
